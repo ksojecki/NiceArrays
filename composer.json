@@ -1,0 +1,19 @@
+{
+  "name": "ksojecki/nice-arrays",
+  "description": "Wrapper to ugly php arrays methods",
+  "minimum-stability": "stable",
+  "license": "BSD",
+  "authors": [
+    {
+      "name": "Kamil Sojekci",
+      "email": "kamil@sojecki.pl"
+    }
+  ],
+  "require-dev": {
+    "phpspec/phpspec": "*"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {"psr-0": {"": "src"}}
+}
