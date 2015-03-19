@@ -1,0 +1,4 @@
+suites:
+    acme_suite:
+        namespace: ksojecki\NiceArrays
+        psr4_prefix: ksojecki\NiceArrays
