@@ -95,12 +95,12 @@ class ArrayWrapperSpec extends ObjectBehavior
     function it_checks_if_key_exists()
     {
         $this->beConstructedWith(['a'=> 1, 'b' => '2']);
-        $this->keyExists('b')->shouldBe(true);
+        $this->isKeyExists('b')->shouldBe(true);
     }
 
     function it_checks_if_key_not_exists()
     {
         $this->beConstructedWith(['a'=> 1, 'b' => '2']);
-        $this->keyExists('c')->shouldBe(false);
+        $this->isKeyExists('c')->shouldBe(false);
     }
 }
