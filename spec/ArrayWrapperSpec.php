@@ -84,4 +84,23 @@ class ArrayWrapperSpec extends ObjectBehavior
         $this->size()->shouldBe(6);
         $this->wrappedArray()->shouldBe([1, 5, 6, 2, 3, 4]);
     }
+
+    function it_adds_value_with_key()
+    {
+        $this->beConstructedWith(['a'=> 1, 'b' => '2']);
+        $this->addWithKey('c', 3);
+        $this->get('c')->shouldBe(3);
+    }
+
+    function it_checks_if_key_exists()
+    {
+        $this->beConstructedWith(['a'=> 1, 'b' => '2']);
+        $this->keyExists('b')->shouldBe(true);
+    }
+
+    function it_checks_if_key_not_exists()
+    {
+        $this->beConstructedWith(['a'=> 1, 'b' => '2']);
+        $this->keyExists('c')->shouldBe(false);
+    }
 }

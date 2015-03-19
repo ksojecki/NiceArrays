@@ -14,6 +14,10 @@ class ArrayWrapper
         $this->array = $array;
     }
 
+    /**
+     * Returns wrapped array. Use it if you want to get vanilla php array
+     * @return array
+     */
     public function wrappedArray()
     {
         return $this->array;
@@ -21,16 +25,29 @@ class ArrayWrapper
 
     public function get($key)
     {
-        if (!array_key_exists($key, $this->array)) {
+        if (!$this->keyExists($key)) {
             throw new ArrayAccessException('Key does not exist in array');
         }
 
         return $this->array[$key];
     }
 
-    public function add($object)
+    public function add($value)
     {
-        $this->array[] = $object;
+        $this->array[] = $value;
+    }
+
+    public function addWithKey($key, $value)
+    {
+        $this->array[$key] = $value;
+    }
+
+    /**
+     * @param $array []
+     */
+    public function addRange($array)
+    {
+        $this->array = array_merge($this->array, $array);
     }
 
     public function first()
@@ -55,8 +72,8 @@ class ArrayWrapper
         return empty($this->array);
     }
 
-    public function addRange($array)
+    public function keyExists($key)
     {
-        $this->array = array_merge($this->array, $array);
+        return array_key_exists($key, $this->array);
     }
 }
