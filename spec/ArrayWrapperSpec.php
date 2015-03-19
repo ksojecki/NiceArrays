@@ -12,24 +12,43 @@ class ArrayWrapperSpec extends ObjectBehavior
         $this->shouldHaveType('ksojecki\NiceArrays\ArrayWrapper');
     }
 
-    function it_should_return_wrapped_array()
+    function it_return_wrapped_array()
     {
-        $array = [1, 2, 3];
-        $this->beConstructedWith($array);
-        $this->wrappedArray()->shouldBe($array);
+        $this->beConstructedWith([1, 2, 3]);
+        $this->wrappedArray()->shouldBe([1, 2, 3]);
     }
 
-    function it_should_get_value_by_key()
+    function it_get_value_by_key()
     {
-        $array = [1, 2, 3];
-        $this->beConstructedWith($array);
+        $this->beConstructedWith([1, 2, 3]);
         $this->get(1)->shouldBe(2);
     }
 
-    function it_should_throw_exception_if_object_is_not_found_by_key()
+    function it_throws_exception_if_object_is_not_found_by_key()
     {
-        $array = [1, 2, 3];
-        $this->beConstructedWith($array);
+        $this->beConstructedWith([1, 2, 3]);
         $this->shouldThrow('ksojecki\NiceArrays\ArrayAccessException')->duringGet(3);
+    }
+
+    function it_returns_first_element()
+    {
+        $this->beConstructedWith([1, 2, 3]);
+        $this->first()->shouldReturn(1);
+    }
+
+    function it_throw_exception_if_array_is_empty_when_accessing_first_element()
+    {
+        $this->shouldThrow('ksojecki\NiceArrays\EmptyArrayException')->duringFirst();
+    }
+
+    function it_return_last_element()
+    {
+        $this->beConstructedWith([1, 2, 3]);
+        $this->last()->shouldReturn(3);
+    }
+
+    function it_throw_exception_if_array_is_empty_when_accessing_last_element()
+    {
+        $this->shouldThrow('ksojecki\NiceArrays\EmptyArrayException')->duringLast();
     }
 }

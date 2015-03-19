@@ -27,4 +27,26 @@ class ArrayWrapper
 
         return $this->array[$key];
     }
+
+    public function first()
+    {
+        if($this->isEmpty()) throw new EmptyArrayException();
+        return $this->array[0];
+    }
+
+    public function last()
+    {
+        if($this->isEmpty()) throw new EmptyArrayException();
+        return $this->array[$this->size() - 1];
+    }
+
+    public function size()
+    {
+        return count($this->array);
+    }
+
+    public function isEmpty()
+    {
+        return empty($this->array);
+    }
 }
