@@ -69,11 +69,19 @@ class ArrayWrapperSpec extends ObjectBehavior
         $this->size()->shouldBe(3);
     }
 
-    function it_should_add_object_at_the_end_of_array()
+    function it_adds_object_at_the_end_of_array()
     {
         $this->beConstructedWith([1, 3, 4]);
         $this->add(2);
         $this->last()->shouldBe(2);
         $this->size()->shouldBe(4);
+    }
+
+    function it_adds_range_of_values_at_the_end_of_array()
+    {
+        $this->beConstructedWith([1, 5, 6]);
+        $this->addRange([2, 3, 4]);
+        $this->size()->shouldBe(6);
+        $this->wrappedArray()->shouldBe([1, 5, 6, 2, 3, 4]);
     }
 }

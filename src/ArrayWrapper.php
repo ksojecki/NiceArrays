@@ -22,7 +22,7 @@ class ArrayWrapper
     public function get($key)
     {
         if (!array_key_exists($key, $this->array)) {
-            throw new ArrayAccessException('Key does not exists in array');
+            throw new ArrayAccessException('Key does not exist in array');
         }
 
         return $this->array[$key];
@@ -53,5 +53,10 @@ class ArrayWrapper
     public function isEmpty()
     {
         return empty($this->array);
+    }
+
+    public function addRange($array)
+    {
+        $this->array = array_merge($this->array, $array);
     }
 }
