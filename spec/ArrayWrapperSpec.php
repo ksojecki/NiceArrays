@@ -38,7 +38,7 @@ class ArrayWrapperSpec extends ObjectBehavior
 
     function it_throw_exception_if_array_is_empty_when_accessing_first_element()
     {
-        $this->shouldThrow('ksojecki\NiceArrays\EmptyArrayException')->duringFirst();
+        $this->shouldThrow('ksojecki\NiceArrays\ArrayAccessException')->duringFirst();
     }
 
     function it_return_last_element()
@@ -49,6 +49,23 @@ class ArrayWrapperSpec extends ObjectBehavior
 
     function it_throw_exception_if_array_is_empty_when_accessing_last_element()
     {
-        $this->shouldThrow('ksojecki\NiceArrays\EmptyArrayException')->duringLast();
+        $this->shouldThrow('ksojecki\NiceArrays\ArrayAccessException')->duringLast();
+    }
+
+    function it_checks_id_array_is_empty()
+    {
+        return $this->isEmpty()->shouldBe(true);
+    }
+
+    function it_checks_if_array_is_not_empty()
+    {
+        $this->beConstructedWith([1, 2, 3]);
+        return $this->isEmpty()->shouldBe(false);
+    }
+
+    function it_return_size_of_array()
+    {
+        $this->beConstructedWith([1, 2, 3]);
+        return $this->size()->shouldBe(3);
     }
 }

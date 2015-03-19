@@ -30,13 +30,13 @@ class ArrayWrapper
 
     public function first()
     {
-        if($this->isEmpty()) throw new EmptyArrayException();
+        if($this->isEmpty()) throw new ArrayAccessException('Array is empty');
         return $this->array[0];
     }
 
     public function last()
     {
-        if($this->isEmpty()) throw new EmptyArrayException();
+        if($this->isEmpty()) throw new ArrayAccessException('Array is empty');
         return $this->array[$this->size() - 1];
     }
 
