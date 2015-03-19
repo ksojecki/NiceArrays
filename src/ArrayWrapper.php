@@ -28,6 +28,11 @@ class ArrayWrapper
         return $this->array[$key];
     }
 
+    public function add($object)
+    {
+        $this->array[] = $object;
+    }
+
     public function first()
     {
         if($this->isEmpty()) throw new ArrayAccessException('Array is empty');

@@ -54,18 +54,26 @@ class ArrayWrapperSpec extends ObjectBehavior
 
     function it_checks_id_array_is_empty()
     {
-        return $this->isEmpty()->shouldBe(true);
+        $this->isEmpty()->shouldBe(true);
     }
 
     function it_checks_if_array_is_not_empty()
     {
         $this->beConstructedWith([1, 2, 3]);
-        return $this->isEmpty()->shouldBe(false);
+        $this->isEmpty()->shouldBe(false);
     }
 
     function it_return_size_of_array()
     {
         $this->beConstructedWith([1, 2, 3]);
-        return $this->size()->shouldBe(3);
+        $this->size()->shouldBe(3);
+    }
+
+    function it_should_add_object_at_the_end_of_array()
+    {
+        $this->beConstructedWith([1, 3, 4]);
+        $this->add(2);
+        $this->last()->shouldBe(2);
+        $this->size()->shouldBe(4);
     }
 }
