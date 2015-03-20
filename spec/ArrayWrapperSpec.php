@@ -95,13 +95,25 @@ class ArrayWrapperSpec extends ObjectBehavior
     function it_checks_if_key_exists()
     {
         $this->beConstructedWith(['a'=> 1, 'b' => '2']);
-        $this->isKeyExists('b')->shouldBe(true);
+        $this->keyExists('b')->shouldBe(true);
     }
 
     function it_checks_if_key_not_exists()
     {
         $this->beConstructedWith(['a'=> 1, 'b' => '2']);
-        $this->isKeyExists('c')->shouldBe(false);
+        $this->keyExists('c')->shouldBe(false);
+    }
+
+    function it_checks_if_value_exists()
+    {
+        $this->beConstructedWith(['a'=> 1, 'b' => '2']);
+        $this->valueExists(1)->shouldBe(true);
+    }
+
+    function it_checks_if_value_not_exists()
+    {
+        $this->beConstructedWith(['a'=> 1, 'b' => '2']);
+        $this->valueExists('b')->shouldBe(false);
     }
 
     function it_remove_all_items_from_array()

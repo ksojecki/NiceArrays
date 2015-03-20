@@ -25,7 +25,7 @@ class ArrayWrapper
 
     public function get($key)
     {
-        if (!$this->isKeyExists($key)) {
+        if (!$this->keyExists($key)) {
             throw new ArrayAccessException('Key does not exist in array');
         }
 
@@ -77,8 +77,13 @@ class ArrayWrapper
         $this->array = [];
     }
 
-    public function isKeyExists($key)
+    public function keyExists($key)
     {
         return array_key_exists($key, $this->array);
+    }
+
+    public function valueExists($value)
+    {
+        return in_array($value, $this->array);
     }
 }
