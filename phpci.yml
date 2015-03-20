@@ -8,13 +8,6 @@ setup:
         action: "install"
 
 test:
-    php_code_sniffer:
-        ignore:
-            - "vendor"
-            - "bin"
-        standard: "PSR2"
-    php_cpd:
-        allow_failures: true
     php_spec:
 
 complete:
