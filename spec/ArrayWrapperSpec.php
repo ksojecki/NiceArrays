@@ -103,4 +103,11 @@ class ArrayWrapperSpec extends ObjectBehavior
         $this->beConstructedWith(['a'=> 1, 'b' => '2']);
         $this->isKeyExists('c')->shouldBe(false);
     }
+
+    function it_remove_all_items_from_array()
+    {
+        $this->beConstructedWith(['a'=> 1, 'b' => '2']);
+        $this->clean();
+        $this->size()->shouldBe(0);
+    }
 }

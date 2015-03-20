@@ -72,6 +72,11 @@ class ArrayWrapper
         return empty($this->array);
     }
 
+    public function clean()
+    {
+        $this->array = [];
+    }
+
     public function isKeyExists($key)
     {
         return array_key_exists($key, $this->array);
