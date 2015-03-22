@@ -116,10 +116,22 @@ class ArrayWrapperSpec extends ObjectBehavior
         $this->valueExists('b')->shouldBe(false);
     }
 
-    function it_remove_all_items_from_array()
+    function it_remove_all_items()
     {
         $this->beConstructedWith(['a'=> 1, 'b' => '2']);
         $this->clean();
         $this->size()->shouldBe(0);
+    }
+
+    function it_should_return_single_column()
+    {
+        $this->beConstructedWith([['a'=> 1, 'b' => 2], ['a' => 1, 'b' => 3]]);
+        $this->column('b')->shouldBe([2, 3]);
+    }
+
+    function it_should_return_empty_array_if_key_dont_exists()
+    {
+        $this->beConstructedWith([['a'=> 1, 'b' => 2], ['a' => 1, 'b' => 3]]);
+        $this->column('c')->shouldBe([]);
     }
 }

@@ -86,4 +86,9 @@ class ArrayWrapper
     {
         return in_array($value, $this->array);
     }
+
+    public function column($columnName)
+    {
+        return array_column($this->array, $columnName);
+    }
 }

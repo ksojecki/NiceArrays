@@ -10,6 +10,3 @@ setup:
 test:
     php_spec:
 
-complete:
-    mysql:
-        - "DROP DATABASE IF EXISTS test;"
