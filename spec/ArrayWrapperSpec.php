@@ -134,4 +134,11 @@ class ArrayWrapperSpec extends ObjectBehavior
         $this->beConstructedWith([['a'=> 1, 'b' => 2], ['a' => 1, 'b' => 3]]);
         $this->column('c')->shouldBe([]);
     }
+
+    function it_should_count_values()
+    {
+        $this->beConstructedWith([1, 2, 4, 1, 4, 3]);
+        var_dump($this->countValues()->getWrappedObject());
+        $this->countValues()->shouldBe([1 => 2, 2 => 1, 4 => 2, 3 => 1]);
+    }
 }

@@ -91,4 +91,9 @@ class ArrayWrapper
     {
         return array_column($this->array, $columnKey, $indexKey);
     }
+
+    public function countValues()
+    {
+        return array_count_values($this->array);
+    }
 }
