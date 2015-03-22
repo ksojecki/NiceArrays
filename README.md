@@ -17,7 +17,8 @@ echo $array->last();
 
 ```
 
-You don't have to be pissed off about haystack/needle function argument and weird naming convention. You can simply mock this object and use it in test, because you are operating on object. Pure happiness ;) 
+You don't have to be pissed off about haystack/needle function argument and weird naming convention. You can simply mock this object and use it in test, because you are operating on object. Pure happiness.
 
 When it was possible methods are throwing an exception. You don't have to think about warnings, checking if key exists. You have to just catch an exception on that application a layer that you want. Just like in C# :) 
+If you want see example of usage please look at specs (spec/ArrayWrapperSpec.php and etc). 
 
