@@ -160,4 +160,18 @@ class ArrayWrapperSpec extends ObjectBehavior
         $this['test'] = 4;
         $this['test']->shouldBe(4);
     }
+
+    function it_should_create_array_with_keys_that_are_provided_in_arguments()
+    {
+        $this->beConstructedWith(['a' => 'b', 'b'=> 'c', 'd' => 'e']);
+        $this->getValues(['a', 'b'])->wrappedArray()->shouldBe(['a' => 'b', 'b' => 'c']);
+        return $this;
+    }
+
+    function it_should_be_abble_to_add_multiple_new_arrays(){
+        $this[] = 'a';
+        $this[] = 'b';
+
+        $this->size()->shouldBe(2);
+    }
 }

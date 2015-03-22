@@ -26,6 +26,11 @@ class ArrayWrapper implements \ArrayAccess
 
     public function offsetSet($offset, $value)
     {
+        if($offset === null) {
+            $this->add($value);
+            return;
+        }
+
         $this->addWithKey($offset, $value);
     }
 
@@ -43,6 +48,11 @@ class ArrayWrapper implements \ArrayAccess
         return $this->array;
     }
 
+    /**
+     * @param $key mixed
+     * @return mixed
+     * @throws ArrayAccessException
+     */
     public function get($key)
     {
         if (!$this->keyExists($key)) {
@@ -50,6 +60,23 @@ class ArrayWrapper implements \ArrayAccess
         }
 
         return $this->array[$key];
+    }
+
+    /**
+     * Returns new array with only that values that are provided in keys
+     * @param $keys []
+     * @return array|ArrayWrapper
+     * @throws ArrayAccessException
+     */
+    public function getValues($keys)
+    {
+        $values = new self();
+
+        foreach ($keys as $key) {
+            $values[$key] = $this->get($key);
+        }
+
+        return $values;
     }
 
     public function add($value)
@@ -84,7 +111,7 @@ class ArrayWrapper implements \ArrayAccess
     public function last()
     {
         if($this->isEmpty()) throw new ArrayAccessException('Array is empty');
-        return $this->array[$this->size() - 1];
+        return $this[$this->size() - 1];
     }
 
     public function size()
