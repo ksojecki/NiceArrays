@@ -2,7 +2,7 @@
 
 namespace ksojecki\NiceArrays;
 
-class ArrayWrapper
+class ArrayWrapper implements \ArrayAccess
 {
     private $array = [];
 
@@ -12,6 +12,26 @@ class ArrayWrapper
     public function __construct($array = [])
     {
         $this->array = $array;
+    }
+
+    public function offsetExists($offset)
+    {
+        return $this->keyExists($offset);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->get($offset);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        $this->addWithKey($offset, $value);
+    }
+
+    public function offsetUnset($offset)
+    {
+        $this->delete($offset);
     }
 
     /**
@@ -40,6 +60,11 @@ class ArrayWrapper
     public function addWithKey($key, $value)
     {
         $this->array[$key] = $value;
+    }
+
+    public function delete($key)
+    {
+        unset($this->array[$key]);
     }
 
     /**

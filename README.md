@@ -9,10 +9,11 @@ General idea is just wrap you generic array into this nice object and use method
 
 ```php
 
-$vanillaPhpArray = ['key' => 'Hello World', 'anotherKey' => 'anotherValue'];
+$vanillaPhpArray = ['key' => 'Hello World', 'anotherKey' => ' it is really nice here'];
 $array = new \ksojecki\NiceArrays\ArrayWrapper($vanillaPhpArray);
 
-echo $vanillaPhpArray->get('key');
+echo $array['key'];
+echo $array->last();
 
 ```
 

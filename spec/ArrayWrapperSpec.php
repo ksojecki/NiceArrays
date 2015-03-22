@@ -140,4 +140,24 @@ class ArrayWrapperSpec extends ObjectBehavior
         $this->beConstructedWith([1, 2, 4, 1, 4, 3]);
         $this->countValues()->shouldBe([1 => 2, 2 => 1, 4 => 2, 3 => 1]);
     }
+
+    function it_should_get_values_like_an_arays()
+    {
+        $this->beConstructedWith([1, 3, 3]);
+        $this[0]->shouldBe(1);
+    }
+
+    function it_should_add_values_like_an_arays()
+    {
+        $this->beConstructedWith([1, 3, 3]);
+        $this[] = 4;
+        $this->size()->shouldBe(4);
+    }
+
+    function it_should_add_values__vith_keys_like_an_arays()
+    {
+        $this->beConstructedWith([1, 3, 3]);
+        $this['test'] = 4;
+        $this['test']->shouldBe(4);
+    }
 }
